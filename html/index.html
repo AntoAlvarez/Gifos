@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIFOS</title>
+    <!--logo-->
+    <link href="/images/logo-mobile.svg" rel="shortcut icon">
+    <!--estilos-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/styles2.css">
+    <link href="/fonts/css/all.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+    <!-- barra de navegacion -->
+    <header id="navbar_section">
+        <!-- logo del sitio -->
+        <a id="link_logo" href="index.html">
+            <img id="img_link_logo" src="../images/logo-mobile.svg" alt="logo del sitio">
+        </a>
+        <!-- buscador -->
+        <div id="cont_search_navbar" class="cont_search hidden">
+            <div id="cont_search_navbar_inactive" class="cont_search_inactive">
+                <img class="close_search_img hidden" src="../images/icon-search-active.svg" alt="icono cancelar busqueda">
+                <input id="navbar_input" class="search_input" type="text" placeholder="Busca GIFOS y más">
+                <img class="search_img" src="../images/icon-search.svg" alt="icono busqueda">
+            </div>
+        </div>
+        <!-- menu de navegacion -->
+        <nav>
+            <!-- hamburguesa mobile -->
+            <img id="img_menu_mobile" src="../images/burger.svg" alt="menu hamburguesa">        
+            <!-- opciones menu -->
+            <ul id="menu">
+                <li class="li_menu"><a class="a_menu m_bold" href="#">Modo Nocturno</a></li>
+                <li class="li_menu"><a class="a_menu m_bold" href="#">Favoritos</a></li>
+                <li class="li_menu"><a class="a_menu m_bold" href="#">Mis GIFOS</a></li>
+            </ul>
+            <!-- boton crear gif --> 
+            <button id="btn_crear_gif" type="button"></button>
+        </nav>
+    </header>
+
+    <!-- seccion hero -->
+    <main>
+        <!-- pantalla de busqueda -->
+        <section id="hero_section" class="flex_mobile">
+            <div id="cont_search_hero_section" class="flex_mobile">
+                <!-- titulo bienvenida -->
+                <h1 class="m_bold">Inspírate, busca, guarda y crea los mejores <span id="span_gifos">GIFOS</span> </h1>
+                <!-- imagen bienvenida -->    
+                <div id="cont_img_hero">
+                    <img id="img_hero" src="../images/ilustra_header.svg" alt="imagen bienvenida">
+                </div>
+                <!-- buscador -->
+                <div id="cont_search_hero" class="cont_search">
+                    <div id="cont_search_hero_inactive" class="cont_search_inactive">
+                        <img id="search_img" class="hidden" src="../images/icon-search-active.svg" alt="icono cancelar busqueda">
+                        <input id="hero_input" class="search_input" type="text" placeholder="Busca GIFOS y más">
+                        <img id="close_search_img" src="../images/icon-search.svg" alt="icono busqueda">
+                    </div>
+                    <!-- linea divisoria -->
+                    <span id="line_search" class="hidden"></span>
+                    <!-- sugerencias -->
+                    <ul id="cont_sugg" class="hidden"></ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- pantalla resultados de busqueda -->
+        <section id="search_results_section" class="flex_mobile hidden">
+            <!-- linea divisoria -->
+            <!-- palabra/s ingresada/s -->
+            <h2 id="search_title" class="m_bold">Ejemplo</h2>
+            <!-- contenedor cards -->
+            <div id="cont_search_cards" class="cont_cards"></div>
+            <!-- contenedor no results -->
+            <div id="cont_search_noresults" class="flex_mobile hidden">
+                <img id="img_noresults" src="../images/icon-mis-gifos-sin-contenido.svg" alt="no results, try again">
+                <p id="text_noresults" class="m_bold">Intenta con otra búsqueda.</p>
+            </div>
+            <!-- boton ver mas -->
+            <button id="btn_more_results" class="btn_text m_bold">VER MÁS</button>
+        </section>
+
+        <!-- pantalla busqueda sin resultados -->
+        <section id="search_noresults_section" class="flex_mobile hidden">
+            <!-- linea divisoria -->
+            <!-- palabra/s ingresada/s -->
+            <h2 id="search_title_noresults" class="m_bold">Ejemplo</h2>
+            <!-- contenedor no results -->
+            <div id="cont_search_noresults" class="flex_mobile">
+                <img id="img_noresults" src="../images/icon-busqueda-sin-resultado.svg" alt="no results, try again">
+                <p id="text_noresults" class="m_bold">Intenta con otra búsqueda.</p>
+            </div>
+        </section>
+
+        <!-- seccion trending topics -->
+        <section id="trending_topics_section" class="flex_mobile">
+            <!-- titulo -->
+            <h4 id="trending_topics_title" class="m_bold">Trending:</h4>
+            <!-- tags -->
+            <div id="trending_topics">
+                <span class="tt m_medium"></span>
+                <span class="tt m_medium"></span>
+                <span class="tt m_medium"></span>
+                <span class="tt m_medium"></span>
+                <span class="tt last m_medium"></span>
+            </div>
+        </section>
+    </main>
+
+    <!-- seccion favoritos -->
+    <section id="favs_section" class="flex_mobile hidden">
+        <!-- icono favs -->
+        <img class="section_icon" src="../images/icon-favoritos.svg" alt="icono favoritos">
+        <!-- titulo favs -->
+        <h2 class="m_bold section_title">Favoritos</h2>
+        <!-- contenedor cards -->
+        <div id="cont_favs_cards" class="cont_cards set_height"></div>
+        <!-- boton ver mas -->
+        <button id="more_favs" class="btn_text m_bold hidden">VER MÁS</button>   
+    </section> 
+    
+    <!-- seccion sin favoritos -->
+    <section id="no_favs_section" class="flex_mobile hidden">
+        <!-- icono favs -->
+        <img class="section_icon" src="../images/icon-favoritos.svg" alt="icono favoritos">
+        <!-- titulo favs -->
+        <h2 class="m_bold section_title">Favoritos</h2>
+        <!-- imagen -->
+        <img class="img_empty_section" src="../images/icon-fav-sin-contenido.svg" alt="icono favoritos sin contenido">
+        <!-- texto -->
+        <p class="text_empty_section m_bold">"¡Guarda tu primer GIFO en Favoritos <br id="fav_br"> para que se muestre aquí!"</p>    
+    </section>
+
+    <!-- seccion trending gifos slider -->
+    <section id="trending_gifos_section" class="flex_mobile">
+        <!-- titulo -->
+        <h2 id="trending_gifos_title" class="m_bold">Trending GIFOS</h2>
+        <!-- subtitulo -->
+        <p id="trending_gifos_subtitle" class="roboto">Mira los últimos <br> GIFOS de nuestra comunidad</p>
+        <!-- slider -->
+        <div id="cont_slider">
+            <!-- boton izquierda -->
+            <button id="btn_left_slider" class="btn_slider"></button>
+            <!-- cards -->
+            <div id="cont_trending_cards"> </div>
+            <!-- boton derecha -->
+            <button id="btn_right_slider" class="btn_slider"></button>
+        </div>
+    </section>
+
+    
+
+    <!-- seccion mis gifos -->
+    <section id="mygifs_section" class="flex_mobile hidden">
+        <!-- icono mis gifos -->
+        <img class="section_icon" src="../images/icon-mis-gifos.svg" alt="icono mis gifos">
+        <!-- titulo mis gifos -->
+        <h2 class="m_bold section_title">Mis GIFOS</h2>
+        <!-- pantalla con gifos -->
+        <div id="cont_mygifs" class="flex_mobile">
+            <!-- contenedor cards -->
+            <div id="cont_mygifs_cards" class="cont_cards"></div>
+            <!-- boton ver mas -->
+            <button class="btn_text m_bold">VER MÁS</button>
+        </div>
+        <!-- pantalla sin gifos -->
+        <div id="cont_mygifs_empty" class="flex_mobile">
+            <!-- imagen -->
+            <img class="img_empty_section" src="../images/icon-mis-gifos-sin-contenido.svg" alt="icono mis gifos sin contenido">
+            <!-- texto -->
+            <p class="text_empty_section m_bold">¡Anímate a crear tu primer GIFO!</p>
+        </div>        
+    </section>
+
+    <!-- pantalla gif max -->
+    <div id="cont_gifmax" class="flex_mobile hidden">
+        <!-- boton cerrar -->
+        <img id="close_max" src="../images/close.svg" alt="icono cerrar gif max">
+        <!-- contenedor arriba -->
+        <div id="cont_slider_max">
+            <!-- boton izquierda -->
+            <button id="btn_left_slider" class="btn_slider"></button>
+            <!-- imagen gif (url) -->
+            <img id="gif_max" src="" alt="imagen gif maximizado">
+            <!-- boton derecha -->
+            <button id="btn_right_slider" class="btn_slider"></button>
+        </div>
+        <!-- contenedor abajo -->
+        <div id="cont_func_max">
+            <!-- contenedor con info del gif-->
+            <div id="cont_info_max">
+                <h4 id="user_max" class="roboto">User</h4>
+                <h3 id="title_max" class="m_bold">Title</h3>
+            </div>
+            <!-- contenedor con botones -->
+            <div id="cont_icons_max">
+                <button id="like_max" class="btn_max"></button>
+                <button id="dwl_max" class="btn_max"></button>
+            </div>
+        </div>  
+    </div>
+
+    <!-- pantalla crear gif -->
+    <section id="create_section" class="hidden">
+        <!-- imagen camara -->
+        <div id="cont_img_camera">
+            <img id="img_camera" src="../images/camara.svg" alt="imagen camara">
+            <img id="img_light" src="../images/element-luz-camara.svg" alt="imagen luz camara">
+        </div>
+        <!-- cuadro para grabacion -->
+        <div id="cont_recording_outer">
+            <!-- bordes -->
+            <span id="top_left" class="corner"></span>
+            <span id="top_right" class="corner"></span>
+            <span id="bottom_left" class="corner"></span>
+            <span id="bottom_right" class="corner"></span>
+            <!-- texto con indicaciones, despues imagen de grabacion -->
+            <div id="cont_recording">
+                <h3>Aquí podrás<br>crear tus propios<span id="span_gifos_2">GIFOS</span></h3>
+                <p class="text_guidelines">¡Crea tu GIFO en sólo 3 pasos!<br>(sólo necesitas una cámara para grabar un video)</p>
+            </div>
+            <!-- overlay al subir la grabacion -->
+            <div id="cont_recording_overlay">
+                <!-- botones laterales -->
+                <div id="cont_btn_corner">
+                    <button class="btn_actions">
+                        <img class="img_btn_actions" src="../images/icon-download.svg" alt="icono descargar gifo">
+                    </button>
+                    <button class="btn_actions">
+                        <img class="img_btn_actions" src="../images/icon-link.svg" alt="icono link del gifo">
+                    </button>
+                </div>
+                <!-- icono y texto centrales-->
+                <img id="img_loader" src="../images/loader.svg" alt="icono cargando">
+                <p id="text_loader">Estamos subiendo tu GIFO</p>
+            </div>
+        </div>
+        <!-- paginacion -->
+        <div id="cont_pagination">
+            <button class="btn_pagination">1</button>
+            <button class="btn_pagination">2</button>
+            <button class="btn_pagination">3</button>
+        </div>
+        <!-- timer -->
+        <div id="cont_timer">
+            <!-- timer -->
+            <p id="timer" class="text_timer">00:00:00</p>
+            <!-- repetir captura -->
+            <a id="repeat" class="text_timer" href="">REPETIR CAPTURA</a>
+        </div>
+        <!-- imagen carrete -->
+        <div id="cont_img_film">
+            <img id="img_film" src="../images/pelicula.svg" alt="imagen carrete de pelicula">
+        </div>
+        <!-- linea divisoria -->
+        <span id="line_before_button"></span>
+        <!-- boton -->
+        <button class="btn_text">COMENZAR</button>
+    </section>
+
+    <!-- footer redes sociales -->
+    <footer class="flex_mobile">
+        <!-- iconos redes -->
+        <div id="cont_social_media" class="flex_mobile">
+            <p id="text_social_media" class="roboto">Compartir en:</p>
+            <div id="cont_social_media_icons">
+                <a class="social_media_icon" href="https://es-la.facebook.com/" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="social_media_icon" id="tw" href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class="social_media_icon" href="https://www.instagram.com/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+        <!-- derechos del sitio -->
+        <p id="text_rights" class="roboto">© GIFOS 2020 All Rights Reserved.</p>
+    </footer>
+
+    <!-- scripts -->
+    <script src="../js/stickyNavbar.js"></script>
+    <script src="../js/darkMode.js"></script>
+    <script src="../js/expandMenu.js"></script>
+    <script src="../js/app.js"></script>
+
+</body>
+
+</html>
+
